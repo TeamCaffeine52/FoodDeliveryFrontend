@@ -1,8 +1,11 @@
 import React from 'react'
-
+import AllProduct from '../component/AllProduct'
 const Home = () => {
     return (
-        <div>Home</div>
+        <div className='min-h-screen bg-slate-300'>
+            <AllProduct />
+            {/* <Products /> */}
+        </div>
     )
 }
 

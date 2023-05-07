@@ -11,8 +11,6 @@ function Login() {
 
     const navigate=useNavigate()
 
-    const userData= useSelector(state=>state)
-
     const dispatch=useDispatch()
 
     const [showPassword,setShowPassword]= useState(false)
@@ -54,7 +52,7 @@ function Login() {
             toast(dataRes.message)
             
             if(dataRes.success){
-                dispatch(loginRedux(dataRes));
+                dispatch(loginRedux(dataRes.user));
                 navigate("/");
             }
         }

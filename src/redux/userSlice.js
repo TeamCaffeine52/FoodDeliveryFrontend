@@ -7,8 +7,7 @@ export const userSlice=createSlice({
     initialState,
     reducers:{
         loginRedux:(state,action)=>{
-            console.log(action.payload.data);
-            state=action.payload.data;
+            return action.payload;
         }
     }
 })

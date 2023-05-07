@@ -11,8 +11,8 @@ function Signup() {
     const [showPassword,setShowPassword]= useState(false)
     const [showConfirmPassword,setShowConfirmPassword]= useState(false)
     const [data,setData]=useState({
-        firstname:"",
-        lastname:"",
+        firstName:"",
+        lastName:"",
         email:"",
         confirmPassword:"",
         password:"",
@@ -38,8 +38,8 @@ function Signup() {
 
     const handleSubmit=async(e)=>{
         e.preventDefault()
-        const {firstname,email,password,confirmPassword} = data;
-        if(firstname && email && password && confirmPassword){
+        const {firstName, lastName, image, email, password, confirmPassword} = data;
+        if(firstName && lastName && email && password && confirmPassword){
             if(password === confirmPassword){
                 const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`,{
                     method:"POST",
@@ -94,10 +94,10 @@ function Signup() {
                 
                 <form className='w-full py-3 flex flex-col' onSubmit={handleSubmit}>
                     <label htmlFor='firstname'>First Name</label>
-                    <input type='text' id='firstname' name='firstname' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.firstname} onChange={handleOnChange}/>
+                    <input type='text' id='firstname' name='firstName' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.firstName} onChange={handleOnChange}/>
 
                     <label htmlFor='lastname'>Last Name</label>
-                    <input type='text' id='lastname' name='lastname' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.lastname} onChange={handleOnChange}/>
+                    <input type='text' id='lastname' name='lastName' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.lastName} onChange={handleOnChange}/>
 
                     <label htmlFor='email'>Email Address</label>
                     <input type='email' id='email' name='email' className='mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-400' value={data.email} onChange={handleOnChange}/>
