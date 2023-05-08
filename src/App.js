@@ -3,10 +3,12 @@ import './App.css';
 import Header from './component/Header'
 import { Outlet } from 'react-router-dom';
 import toast,{Toaster} from 'react-hot-toast';
+import RedirectLogin from './component/RedirectLogin';
 
 function App() {
   return (
     <>
+      <RedirectLogin />
       <Toaster/>
       <div>
           <Header/>

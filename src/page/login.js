@@ -5,11 +5,13 @@ import {Link,useNavigate} from 'react-router-dom'
 import { toast } from "react-hot-toast";
 import {loginRedux} from '../redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
-
+import { useCookies } from "react-cookie"
 
 function Login() {
 
     const navigate=useNavigate()
+
+    const [, setCookies] = useCookies(["access_token"]);
 
     const dispatch=useDispatch()
 
@@ -52,6 +54,8 @@ function Login() {
             toast(dataRes.message)
             
             if(dataRes.success){
+                setCookies("access_token", dataRes.token);
+                // window.localStorage.setItem("token", dataRes.token);
                 dispatch(loginRedux(dataRes.user));
                 navigate("/");
             }
