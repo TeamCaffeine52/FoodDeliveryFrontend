@@ -14,7 +14,6 @@ const  RedirectLogin = () => {
 
         if(!(location.pathname === '/login' || location.pathname === '/signup'))
         {
-            console.log(cookies);
             if(!cookies["access_token"]) 
             {
                 navigate('/login');
