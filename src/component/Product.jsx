@@ -2,7 +2,6 @@ import React from "react";
 import "../assets/css/Product.css";
 import pizza from "../assets/cheese-burst-pizza.jpg";
 const Product = (props) => {
-    console.log(props)
     return (
         <>
             <div className="product-card card" key={props.value._id}>

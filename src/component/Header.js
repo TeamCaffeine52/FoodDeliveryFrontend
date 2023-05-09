@@ -37,7 +37,7 @@ const Header = () => {
                         </div>
                         {showMenu && (
                         <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col">
-                            <Link to={"newproduct"} className="whitespace-nowrap cursor-pointer">New product</Link>
+                            <Link to={"admin/login"} className="whitespace-nowrap cursor-pointer">Admin Login</Link>
                             <Link to={"login"} className="Whitespace-nowrap cursor-pointer">Login</Link>
                         </div>
                         )}
