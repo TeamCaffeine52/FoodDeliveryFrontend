@@ -3,17 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = []
 
 export const categorySlice = createSlice({
-	name: "product",
+	name: "category",
 	initialState,
 	reducers: {
-		loadCategory: (state, action) => {
+		loadAllCategory: (state, action) => {
 			return action.payload;
 		},
+
+		addCategory: (state, action) => {
+			state.push(action.payload);
+		},
+
+		removeCategory: (state, action) => {
+			state.slice(action.payload.index, 1);
+		}
 	},
 });
 
 export const {
-	loadCategory
+	loadAllCategory,
+	addCategory,
+	removeCategory
 } = categorySlice.actions;
 
-export default categorySlice.reducer;
+export default categorySlice;

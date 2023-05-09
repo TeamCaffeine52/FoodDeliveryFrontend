@@ -6,11 +6,11 @@ export const userSlice=createSlice({
     name: "user",
     initialState,
     reducers:{
-        loginRedux:(state,action)=>{
+        loadUser:(state,action)=>{
             return action.payload;
         }
     }
 })
 
-export const {loginRedux} = userSlice.actions
-export default userSlice.reducer
+export const { loadUser } = userSlice.actions
+export default userSlice;

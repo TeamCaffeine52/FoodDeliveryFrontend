@@ -3,7 +3,7 @@ import loginsignupimage from "../assets/login-animation.gif"
 import {BiShow,BiHide} from "react-icons/bi"
 import {Link,useNavigate} from 'react-router-dom'
 import { toast } from "react-hot-toast";
-import {loginRedux} from '../redux/userSlice';
+import { loadUser } from '../redux/userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useCookies } from "react-cookie"
 
@@ -56,7 +56,7 @@ function Login() {
             if(dataRes.success){
                 setCookies("access_token", dataRes.token);
                 // window.localStorage.setItem("token", dataRes.token);
-                dispatch(loginRedux(dataRes.user));
+                dispatch(loadUser(dataRes.user));
                 navigate("/");
             }
         }

@@ -6,14 +6,34 @@ export const productSlice = createSlice({
 	name: "product",
 	initialState,
 	reducers: {
-		loadProducts: (state, action) => {
+		loadAllProducts: (state, action) => {
 			return action.payload;
 		},
+
+		addProduct: (state, action) => {
+			state.push(action.payload);
+		},
+
+		removeProduct: (state, action) => {
+			state.slice(action.payload.index, 1);
+		},
+
+		updateProductPrice: (state, action) => {
+			state[action.payload.index].productPrice = action.payload.productPrice;
+		},
+
+		updateProductQuantity: (state, action) => {
+			state[action.payload.index].updateProductQuantity = action.payload.productQuantity;
+		}
 	},
 });
 
 export const {
-	loadProducts
+	loadAllProducts,
+	addProduct,
+	removeProduct,
+	updateProductPrice,
+	updateProductQuantity
 } = productSlice.actions;
 
-export default productSlice.reducer;
+export default productSlice;
