@@ -1,6 +1,6 @@
 import React from "react";
-import teamSiddhesh from "../assets/team/siddhesh.jpg";
-import teamSakshi from "../assets/team/sakshi.jpg";
+import teamSiddhesh from "../assets/team/siddhesh_2.jpg";
+import teamSakshi from "../assets/team/sakshi_1.jpg";
 import teamSavani from "../assets/team/savani.jpg";
 import teamDipalee from "../assets/team/dipalee.jpg";
 import "../assets/css/About.css";
@@ -13,7 +13,7 @@ function About() {
 			<section className="about-section-white">
 				<div className="about-card">
 					<div className="col-md-12 ">
-						<center><h2 className="main">Food Ordering App Developed in MERN Stack</h2><br /></center>
+						<center><h2>Food Ordering App Developed in MERN Stack</h2><br /></center>
 						<p>A food ordering app developed in the MERN stack would be a full-stack web application that enables users to order food online from restaurant. The MERN stack is a popular web development stack that consists of four technologies: MongoDB, ExpressJS, ReactJS, and NodeJS.</p>
 						<p>The app's functionality would typically include the following features:</p>
 						<ul>
@@ -45,7 +45,8 @@ function About() {
 								<img src={teamSiddhesh} className="about-team-img" alt="pic" />
 								<h3>SIDDHESH DHINGE</h3>
 								<div className="about-team-info"><p>Team Lead</p></div>
-								<p>Developed detailed overview of project and managed backend part.</p>
+								<p>Project planning & managed backend.</p>
+								<p></p>
 							</div>
 						</div>
 						<div className="col-sm-6 col-md-3">
@@ -53,6 +54,7 @@ function About() {
 								<img src={teamSakshi} className="about-team-img" alt="pic" />
 								<h3>SAKSHI ATTARDE</h3>
 								<div className="about-team-info"><p>Front-End Developer</p></div>
+								
 								<p>Developed the Front-end of the Project.</p>
 							</div>
 						</div>
@@ -61,7 +63,7 @@ function About() {
 								<img src={teamSavani} className="about-team-img" alt="pic" />
 								<h3>SAVANI KALEKAR</h3>
 								<div className="about-team-info"><p>Back-End Developer </p></div>
-								<p>Savani worked on the backend of the project.</p>
+								<p>Savani worked on the backend of project.</p>
 							</div>
 						</div>
 						<div className="col-sm-6 col-md-3">
@@ -69,7 +71,7 @@ function About() {
 								<img src={teamDipalee} className="about-team-img" alt="pic" />
 								<h3>DIPALEE JETHAR</h3>
 								<div className="about-team-info"><p>Front-End Developer</p></div>
-								<p>Worked on Designing and Front-End of the Project</p>
+								<p>Worked on Front-End of the Project</p>
 							</div>
 						</div>
 					</div>

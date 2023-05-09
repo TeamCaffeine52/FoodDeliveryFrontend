@@ -1,11 +1,21 @@
 .product-card{
-    width: 100vh;
+    width: 80%;
+    height: 10%;
+    margin: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: powderblue;     
+    display: flex;   
+}
+.product-card:hover {
+    transform: scale(1.05);
+    transition: all .5s ease-in-out;
+
 }
 
-.product-outer {
+ .product-outer {
     width: 100%;
     text-align: right;
-    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .product-inner {
@@ -17,8 +27,15 @@
     text-align: center;
 }
 
+.img{
+
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;    
+
+}
 .product-button {
-    padding: 5px 15px;
+    padding: 5px 15px;    
     background: #5ba545;
     border: 0 none;
     cursor: pointer;
@@ -26,34 +43,51 @@
     border-radius: 5px;
     color: #fff;
 }
-.product-wrapper {
+ .product-wrapper {
     margin: 0 auto;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+} 
+
+.card-body b{
+    font-size: 25px;
+    
 }
 
-.product-wrapper .product-img {
+/* .product-wrapper .product-img {
     width: 250px;
-    height: 250px;
-}
+    height: 250px; 
+     width:100%;
+} */
 
-.product-outerCircle {
+/*.product-outerCircle {
     overflow: hidden;
     border-radius: 50%;
-    width: 240px;
-    height: 240px;
+    width: 150px;
+    height: 150px;
     position: relative;
+    /* margin: auto;
+    width: 200px;
+    height: 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%; 
+
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 100%;
+    margin: -60px auto 0;
 }
 
-.product-circleinfo {
+/*.product-circleinfo {
     position: absolute;
-    background: rgba(102, 153, 153, 0.96);
-    border-radius: 50%;
+    background: rgba(102, 153, 153, 0.96);    
     width: 200px;
-    height: 200px;
+    height: 100px;
     transition: all 0.5s ease-in-out;
     top: 50%;
     left: -250px;
@@ -61,12 +95,12 @@
     text-align: center;
     color: white;
 }
-
+ 
 .product-outerCircle:hover .product-circleinfo {
     transition: all 0.5s ease-in-out;
     left: 50%;
-}
+} 
 
 .product-h2 {
     padding-top: 55px;
-}
+} */ 

@@ -1,6 +1,8 @@
 .about-section-white {
     background: #fff;
     padding: 70px 0;
+    background: linear-gradient(to bottom left, rgb(235, 36, 122) 50%, white 10%);
+
 }
 
 .about-team-item {
@@ -72,6 +74,26 @@
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+}
+
+.section-title{
+    font-weight: bolder;
+    font-size: 50px;
+    padding: 30px;
+
+}
+
+.section-subtitle{
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.about-section-title{
+    font-weight: bolder;
+    font-size: 50px;
+    padding: 20px;
 }
 
 ul.about-team-icon {
@@ -150,10 +172,10 @@ ul.about-team-icon li a.email {
 }
 
 .about-card h2 {
-    font-size: 2.5rem;
+    font-size: 3.2rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: #ffc6c6;
+    color: #4099ff;
 }
 
 .about-card p {
