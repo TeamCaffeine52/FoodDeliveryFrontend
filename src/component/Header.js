@@ -3,9 +3,15 @@ import logo from "../assets/logo.jpg";
 import { Link } from 'react-router-dom';
 import {FaRegUserCircle} from "react-icons/fa"
 import {BsFillCartFill} from "react-icons/bs"
-
+import { useSelector } from 'react-redux';
+import { useCookies } from "react-cookie";
 
 const Header = () => {
+    const [cookies , , ] = useCookies(["access_token"]);
+    const isLoginned = cookies["access_token"] ? true : false;
+    
+    const isAdmin = useSelector((state) => state.user.isAdmin);
+
     const[showMenu,setshowMenu] = useState(false);
     const handleShowMenu = ()=>{
         setshowMenu(preve => !preve) 
@@ -21,24 +27,46 @@ const Header = () => {
                 </Link>
 
                 <div className="flex items-center gap-4 md:gap-7">
-                    <nav className="flex gap-4 md:gap-6 text-base md:text-lg">
-                        <Link to={""}>Home</Link>
-                        <Link to={"menu"}>Menu</Link>
-                        <Link to={"about"}>About</Link>
-                        <Link to={"contact"}>Contact</Link>
-                    </nav>
-                    <div className="text-2xl text-sale-600 relative">
-                        <BsFillCartFill/>
-                        <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center">0</div>
-                    </div>
+                    { isLoginned ?
+                        <>
+                            <nav className="flex gap-4 md:gap-6 text-base md:text-lg">
+                                { isAdmin ? 
+                                    <>
+                                        <Link to={"/admin"}>Home</Link>
+                                        <Link to={"/admin/order"}>Orders</Link>
+                                        <Link to={"/about"}>About</Link>
+                                        <Link to={"/contact"}>Contact</Link>
+                                    </>
+                                    : <>
+                                        <Link to={"/"}>Home</Link>
+                                        <Link to={"/cart"}>My Orders</Link>
+                                        <Link to={"/about"}>About</Link>
+                                        <Link to={"/contact"}>Contact</Link>
+                                    </>
+                                }
+                            </nav>
+                            <div className="text-2xl text-sale-600 relative">
+                                <BsFillCartFill/>
+                                <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center">0</div>
+                            </div>
+                        </>
+                        : null
+                    }
                     <div className=" text-slate-600"onClick={handleShowMenu}>
                         <div className="text-3xl cursor-pointer">
                             <FaRegUserCircle />
                         </div>
                         {showMenu && (
                         <div className="absolute right-2 bg-white py-2 px-2 shadow drop-shadow-md flex flex-col">
-                            <Link to={"admin/login"} className="whitespace-nowrap cursor-pointer">Admin Login</Link>
-                            <Link to={"login"} className="Whitespace-nowrap cursor-pointer">Login</Link>
+                            { isLoginned ?
+                                <>
+                                    <Link to={"logout"} className="Whitespace-nowrap cursor-pointer">Logout</Link>
+                                </>
+                                : <>
+                                    <Link to={"admin/login"} className="whitespace-nowrap cursor-pointer">Admin Login</Link>
+                                    <Link to={"login"} className="Whitespace-nowrap cursor-pointer">Login</Link>
+                                </>
+                            }
                         </div>
                         )}
                         
