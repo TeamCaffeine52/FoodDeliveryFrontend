@@ -1,9 +1,9 @@
 import React from "react";
-import teamSiddhesh from "../assest/team/siddhesh.jpg";
-import teamSakshi from "../assest/team/sakshi.jpg";
-import teamSavani from "../assest/team/savani.jpg";
-import teamDipalee from "../assest/team/dipalee.jpg";
-import "./About.css";
+import teamSiddhesh from "../assets/team/siddhesh.jpg";
+import teamSakshi from "../assets/team/sakshi.jpg";
+import teamSavani from "../assets/team/savani.jpg";
+import teamDipalee from "../assets/team/dipalee.jpg";
+import "../assets/css/About.css";
 
 const ContactUs = () => {
 	return(

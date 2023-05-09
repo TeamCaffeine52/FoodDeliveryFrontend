@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import loginsignupimage from "../assest/login-animation.gif"
+import loginsignupimage from "../assets/login-animation.gif"
 import {BiShow,BiHide} from "react-icons/bi"
 import {Link,useNavigate} from 'react-router-dom'
 import { toast } from "react-hot-toast";

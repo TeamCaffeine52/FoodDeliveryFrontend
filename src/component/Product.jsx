@@ -1,6 +1,6 @@
 import React from "react";
-import "./Product.css";
-import pizza from "../assest/cheese-burst-pizza.jpg";
+import "../assets/css/Product.css";
+import pizza from "../assets/cheese-burst-pizza.jpg";
 const Product = (props) => {
     console.log(props)
     return (

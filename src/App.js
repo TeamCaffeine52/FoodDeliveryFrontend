@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './assets/css/App.css';
 import Header from './component/Header'
 import { Outlet } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';

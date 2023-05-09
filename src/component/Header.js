@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from "../assest/logo.jpg";
+import logo from "../assets/logo.jpg";
 import { Link } from 'react-router-dom';
 import {FaRegUserCircle} from "react-icons/fa"
 import {BsFillCartFill} from "react-icons/bs"
