@@ -7,12 +7,13 @@ import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } fro
 import Home from './page/Home';
 import About from './page/About';
 import ContactUs from './page/ContactUs';
-import Login from './page/login';
+import Login from './page/Login';
 import Signup from './page/Signup';
 import AdminApp from './page/admin/AdminApp';
 import AdminLogin from './page/admin/AdminLogin';
 import AdminHome from './page/admin/AdminHome';
 import AdminOrder from './page/admin/AdminOrder';
+import Logout from './component/Logout';
 import { store } from './redux/index';
 import { Provider } from 'react-redux';
 
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
 		<Route path='/' element={<App/>}>
 		<Route index element={<Home/>} />
 		<Route path='login' element={<Login/>} />
+		<Route path='logout' element={<Logout/>} />
 		<Route path='signup' element={<Signup/>} />
 		<Route path='about' element={<About/>} />
 		<Route path='contact' element={<ContactUs/>} />

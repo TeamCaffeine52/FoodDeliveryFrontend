@@ -54,7 +54,7 @@ function Login() {
             toast(dataRes.message)
             
             if(dataRes.success){
-                setCookies("access_token", dataRes.token);
+                setCookies("access_token", dataRes.token, {maxAge: 60 * 60});
                 // window.localStorage.setItem("token", dataRes.token);
                 dispatch(loadUser(dataRes.user));
                 navigate("/");
