@@ -1,0 +1,30 @@
+.category-container{
+    display: flex;
+    margin: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.category-image{
+    display: flex;
+    border-radius: 50%;
+    width: 10vw;
+    aspect-ratio: 1/1;
+    background: url(https://picsum.photos/200);
+    background-size: 100%;
+    background-position: center;
+    box-shadow: 0px 0px 5px gray;
+    cursor: pointer;
+    transition: all 1s;
+}
+.category-image:hover{
+    background-size: 150%;
+    box-shadow: 0px 0px 0px gray;
+    background-position: center;
+}
+.category-name{
+    text-align: center;
+    display: flex;
+    font-size: 1em;
+    bottom: 0;
+}   

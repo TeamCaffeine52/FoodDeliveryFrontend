@@ -1,5 +1,42 @@
-.home-products-div{
+.home-main-div {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5vw 5vw;
+}
+
+
+.home-product-display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-slideshow{
+    height: fit-content;
+    width: 100%;
+    background-color: lightgray;
+}
+
+.home-category-display {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin: 30px 0;
+}
+
+.home-category-display::-webkit-scrollbar {
+    height: 5px;
+}
+
+.home-category-display::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.home-category-display::-webkit-scrollbar-track {
+    background-color: transparent;
 }
