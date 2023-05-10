@@ -8,21 +8,21 @@ import { loadAllCategory } from '../redux/categorySlice';
 import Slide from '../component/Slide';
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
-import img1 from '../assets/slideshow/img1.jpg';
-import img2 from '../assets/slideshow/img2.jpg';
-import img3 from '../assets/slideshow/img3.jpg';
-import img4 from '../assets/slideshow/img4.jpg';
-import img5 from '../assets/slideshow/img5.jpg';
-import img6 from '../assets/slideshow/img6.jpg';
-import img7 from '../assets/slideshow/img7.jpg';
+import img1 from '../assets/slideshow/1.jpg';
+import img2 from '../assets/slideshow/2.jpg';
+import img3 from '../assets/slideshow/3.jpg';
+import img4 from '../assets/slideshow/4.jpg';
+import img5 from '../assets/slideshow/5.jpg';
+import img6 from '../assets/slideshow/6.webp';
 
 
-const slideImages = [img1, img2, img3, img4, img5, img6, img7];
+const slideImages = [img1, img2, img3, img4, img5, img6];
 
 const Home = () => {
     const dispatch = useDispatch();
     const productState = useSelector((state) => state.product);
     const categoryState = useSelector((state) => state.category);
+
     const [selectedCategoryId, setSelectedCategoryId] = useState();
 
     const updateCategorySelection = (index) => {
@@ -59,9 +59,6 @@ const Home = () => {
         requestCategoryData();
         requestProductData();
     }, [])
-
-    
-    // console.log(selectedCategoryProducts);
 
 
     return (

@@ -74,6 +74,15 @@
     height: auto;
 }
 
+.product-bottom{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.product-price{
+
+}
+
 /* .product-wrapper .product-img {
     width: 250px;
     height: 250px; 

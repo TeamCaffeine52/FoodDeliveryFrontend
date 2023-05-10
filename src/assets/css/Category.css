@@ -15,7 +15,10 @@
     background-position: center;
     box-shadow: 0px 0px 5px gray;
     cursor: pointer;
-    transition: all 1s;
+    transition: background 1s;
+}
+.category-image-clicked{
+    border: 2px solid black;
 }
 .category-image:hover{
     background-size: 150%;
