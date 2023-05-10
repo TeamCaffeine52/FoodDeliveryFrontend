@@ -49,22 +49,26 @@ function Signup() {
                     body:JSON.stringify(data)
                 })
 
-                const dataRes=await fetchData.json()
-                console.log(dataRes)
+                const dataRes=await fetchData.json();
+                console.log(dataRes);
                 
-                toast(dataRes.message)
                 
                 if(dataRes.success)
                 {
-                    navigate("/login")
+                    toast.success(dataRes.message);
+                    navigate("/login");
+                }
+                else
+                {
+                    toast.error(dataRes.message);
                 }
             }
             else{
-                alert("Password and Confirm Password are not same!!")
+                toast.error("Password and Confirm Password are not same!!");
             }
         }
         else
-            alert("Please enter required fields..")
+            toast.error("Please enter required fields..")
     }
 
     const handleUploadProfileImage=async(e)=>{

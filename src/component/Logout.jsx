@@ -10,7 +10,7 @@ const Logout = () => {
     removeCookie('access_token');
     
     useEffect(() => {
-        toast('Logout Successful');
+        toast.success('Logout Successful');
         navigate('/');
     }, [])
 

@@ -10,6 +10,7 @@ const Header = () => {
     const [cookies , , ] = useCookies(["access_token"]);
     const isLoginned = cookies["access_token"] ? true : false;
     
+    const cart = useSelector((state) => state.cart);
     const isAdmin = useSelector((state) => state.user.isAdmin);
 
     const[showMenu,setshowMenu] = useState(false);
@@ -46,8 +47,12 @@ const Header = () => {
                                 }
                             </nav>
                             <div className="text-2xl text-sale-600 relative">
-                                <BsFillCartFill/>
-                                <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center">0</div>
+                                <Link to={"/cart"}>
+                                    <BsFillCartFill/>
+                                    <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
+                                        {cart.items.length}
+                                    </div>
+                                </Link>
                             </div>
                         </>
                         : null

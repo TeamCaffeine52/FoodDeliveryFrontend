@@ -7,6 +7,7 @@ import { createBrowserRouter,createRoutesFromElements,Route,RouterProvider } fro
 import Home from './page/Home';
 import About from './page/About';
 import ContactUs from './page/ContactUs';
+import Cart from './page/Cart';
 import Login from './page/Login';
 import Signup from './page/Signup';
 import AdminApp from './page/admin/AdminApp';
@@ -20,20 +21,19 @@ import { Provider } from 'react-redux';
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<Route path='/' element={<App/>}>
-		<Route index element={<Home/>} />
-		<Route path='login' element={<Login/>} />
-		<Route path='logout' element={<Logout/>} />
-		<Route path='signup' element={<Signup/>} />
-		<Route path='about' element={<About/>} />
-		<Route path='contact' element={<ContactUs/>} />
+			<Route index element={<Home/>} />
+			<Route path='login' element={<Login/>} />
+			<Route path='logout' element={<Logout/>} />
+			<Route path='signup' element={<Signup/>} />
+			<Route path='cart' element={<Cart/>} />
+			<Route path='about' element={<About/>} />
+			<Route path='contact' element={<ContactUs/>} />
 
-		<Route path='/admin' element={<AdminApp/>} >
-			<Route index element={<AdminHome/>} />
-			<Route path='login' element={<AdminLogin/>} />
-			<Route path='order' element={<AdminOrder/>} />
-		</Route>
-			
-		
+			<Route path='/admin' element={<AdminApp/>} >
+				<Route index element={<AdminHome/>} />
+				<Route path='login' element={<AdminLogin/>} />
+				<Route path='order' element={<AdminOrder/>} />
+			</Route>
 		</Route>
 	) 
 )

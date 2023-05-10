@@ -1,0 +1,10 @@
+.bill-item-row{
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    margin: 5px 0;
+}
+
+.bill-item-total-price{
+    margin-top: 5px;
+    grid-column-start: 3;
+}

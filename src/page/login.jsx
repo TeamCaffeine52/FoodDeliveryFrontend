@@ -40,7 +40,7 @@ function Login() {
     const handleSubmit=async(e)=>{
         e.preventDefault()
         const {email,password}=data
-        if(email && password){         
+        if(email && password){
             const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/login`,{
                 method:"POST",
                 headers:{
@@ -50,18 +50,22 @@ function Login() {
             })
 
             const dataRes=await fetchData.json()
-            console.log(dataRes)
-            toast(dataRes.message)
+            console.log(dataRes);
             
             if(dataRes.success){
+                toast.success(dataRes.message);
                 setCookies("access_token", dataRes.token, {maxAge: 60 * 60});
                 // window.localStorage.setItem("token", dataRes.token);
                 dispatch(loadUser(dataRes.user));
                 navigate("/");
             }
+            else
+            {
+                toast.error(dataRes.message);
+            }
         }
         else{
-            toast("Please enter required fields..")
+            toast.error("Please enter required fields..")
         }
     }
     return(

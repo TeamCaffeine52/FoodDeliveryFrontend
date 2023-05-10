@@ -1,8 +1,7 @@
-import logo from './logo.svg';
 import './assets/css/App.css';
 import Header from './component/Header'
 import { Outlet } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import RedirectLogin from './component/RedirectLogin';
 
 function App() {

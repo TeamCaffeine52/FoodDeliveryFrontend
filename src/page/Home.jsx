@@ -73,7 +73,11 @@ const Home = () => {
 
             <div className='home-category-display'>
                 {categoryState.map((value, index) => {
-                    return <Category value={value} index={index} updateCategorySelection={updateCategorySelection} />
+                    return <Category 
+                        value={value} 
+                        index={index} 
+                        updateCategorySelection={updateCategorySelection} 
+                        key={value._id} />
                 })}
             </div>
             
@@ -81,7 +85,7 @@ const Home = () => {
                 {productState.map((value, index) => {
                     return (
                         value.categoryId === selectedCategoryId ?
-                            <Product value={value} index={index} />
+                            <Product value={value} index={index} key={value._id}/>
                             : null
                     );
                 })}
