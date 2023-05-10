@@ -59,7 +59,7 @@ const OrderForm = (props) => {
                             <input type="number" id="contact" name="contact" placeholder="Enter Phone No." value={formData.contact} onChange={updateForm} required />
                         </div>
                         <div className="orderform-form-group">
-                            <Button type="submit" variant="outlined"> Purchase </Button>
+                            <Button type="submit" variant="outlined"> Place Order </Button>
                         </div>
                     </fieldset>
                 </form>
