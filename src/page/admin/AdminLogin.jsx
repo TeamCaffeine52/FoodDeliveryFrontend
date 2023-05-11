@@ -2,17 +2,13 @@ import React, { useState } from 'react'
 import { BiShow,BiHide } from "react-icons/bi"
 import { Link,useNavigate } from 'react-router-dom'
 import { toast } from "react-hot-toast";
-import { useSelector, useDispatch } from 'react-redux';
 import { useCookies } from "react-cookie"
 import loginsignupimage from "../../assets/login-animation.gif"
-import { loadUser } from '../../redux/userSlice';
 
 function Login() {
     const navigate=useNavigate()
 
     const [, setCookies] = useCookies(["access_token"]);
-
-    const dispatch=useDispatch()
 
     const [showPassword,setShowPassword]= useState(false)
     const [data,setData]=useState({
@@ -55,7 +51,7 @@ function Login() {
                 toast.success(dataRes.message);
                 setCookies("access_token", dataRes.token, {maxAge: 60 * 60});
                 // window.localStorage.setItem("token", dataRes.token);
-                dispatch(loadUser(dataRes.user));
+                // dispatch(loadUser(dataRes.user));
                 navigate("/admin");
             }
             else{

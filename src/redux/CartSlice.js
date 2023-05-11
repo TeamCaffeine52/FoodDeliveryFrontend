@@ -41,6 +41,12 @@ export const cartSlice = createSlice({
                 state.items[index].purchasedQuantity = updatedPurchasedQuantity;
             }
         },
+        emptyCart: (state, action) => {
+            return {
+                deliveryAddress : {},
+                items : []
+            }
+        }
     },
 });
 
@@ -50,6 +56,7 @@ export const {
     deleteCartItem,
     increasePurchasedQuantity,
     decreasePurchasedQuantity,
+    emptyCart,
 } = cartSlice.actions;
 
 export default cartSlice;

@@ -3,8 +3,6 @@ import loginsignupimage from "../assets/login-animation.gif"
 import {BiShow,BiHide} from "react-icons/bi"
 import {Link,useNavigate} from 'react-router-dom'
 import { toast } from "react-hot-toast";
-import { loadUser } from '../redux/userSlice';
-import { useSelector, useDispatch } from 'react-redux';
 import { useCookies } from "react-cookie"
 
 function Login() {
@@ -12,8 +10,6 @@ function Login() {
     const navigate=useNavigate()
 
     const [, setCookies] = useCookies(["access_token"]);
-
-    const dispatch=useDispatch()
 
     const [showPassword,setShowPassword]= useState(false)
     const [data,setData]=useState({
@@ -46,6 +42,7 @@ function Login() {
                 headers:{
                     "content-type":"application/json"
                 },
+                credentials: 'same-origin',
                 body:JSON.stringify(data)
             })
 
@@ -56,7 +53,7 @@ function Login() {
                 toast.success(dataRes.message);
                 setCookies("access_token", dataRes.token, {maxAge: 60 * 60});
                 // window.localStorage.setItem("token", dataRes.token);
-                dispatch(loadUser(dataRes.user));
+                // dispatch(loadUser(dataRes.user));
                 navigate("/");
             }
             else

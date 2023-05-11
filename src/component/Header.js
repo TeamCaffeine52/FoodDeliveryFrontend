@@ -5,13 +5,17 @@ import {FaRegUserCircle} from "react-icons/fa"
 import {BsFillCartFill} from "react-icons/bs"
 import { useSelector } from 'react-redux';
 import { useCookies } from "react-cookie";
+import jwt_decode from 'jwt-decode';
 
 const Header = () => {
     const [cookies , , ] = useCookies(["access_token"]);
     const isLoginned = cookies["access_token"] ? true : false;
     
     const cart = useSelector((state) => state.cart);
-    const isAdmin = useSelector((state) => state.user.isAdmin);
+    let isAdmin = false;
+    try {
+        isAdmin = jwt_decode(cookies["access_token"]).isAdmin; 
+    } catch (error) {}
 
     const[showMenu,setshowMenu] = useState(false);
     const handleShowMenu = ()=>{
