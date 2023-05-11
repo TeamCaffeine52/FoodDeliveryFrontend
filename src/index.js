@@ -8,6 +8,7 @@ import Home from './page/Home';
 import About from './page/About';
 import ContactUs from './page/ContactUs';
 import Cart from './page/Cart';
+import Order from './page/Order';
 import Login from './page/Login';
 import Signup from './page/Signup';
 import AdminApp from './page/admin/AdminApp';
@@ -26,6 +27,7 @@ const router = createBrowserRouter(
 			<Route path='logout' element={<Logout/>} />
 			<Route path='signup' element={<Signup/>} />
 			<Route path='cart' element={<Cart/>} />
+			<Route path='orders' element={<Order/>} />
 			<Route path='about' element={<About/>} />
 			<Route path='contact' element={<ContactUs/>} />
 

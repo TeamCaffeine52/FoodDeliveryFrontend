@@ -5,6 +5,42 @@ import {Link,useNavigate} from 'react-router-dom'
 import { ImagetoBase64 } from '../utility/ImagetoBase64'
 import { toast } from "react-hot-toast";
 
+const validateData = (data, toast) => {
+    if (!new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+$', 'gm').test(data.email))
+    {
+        toast.error('Invalid Email');
+        return false;
+    }
+    if (!new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$', 'gm').test(data.password))
+    {
+        toast.error('Password must be minimum eight characters, have atleast one uppercase letter, one lowercase letter, one number and one special character');
+        return false;
+    }
+    if(data.password.length > 16)
+    {
+        toast.error('Password must be of maximum 16 characters');
+        return false;
+    }
+    if(data.password !== data.confirmPassword)
+    {
+        toast.error('Password and Confirm Password must be same');
+        return false;
+    }
+    if (!new RegExp('^[a-zA-Z]+$', 'gm').test(data.firstName))
+    {
+        toast.error('First Name only contains small and capital letters');
+        return false;
+    }
+    if (!new RegExp('^[a-zA-Z]+$', 'gm').test(data.lastName))
+    {
+        toast.error('Last Name only contains small and capital letters');
+        return false;
+    }
+
+
+    return true;
+}
+
 function Signup() {
     const navigate=useNavigate();
 
@@ -17,7 +53,6 @@ function Signup() {
         confirmPassword:"",
         password:"",
         image:""
-        
     });
 
     const handleShowPassword = ()=>{
@@ -37,35 +72,34 @@ function Signup() {
     }
 
     const handleSubmit=async(e)=>{
-        e.preventDefault()
+        e.preventDefault();
         const {firstName, lastName, image, email, password, confirmPassword} = data;
-        if(firstName && lastName && email && password && confirmPassword){
-            if(password === confirmPassword){
-                const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`,{
-                    method:"POST",
-                    headers:{
-                        "content-type":"application/json"
-                    },
-                    body:JSON.stringify(data)
-                })
 
-                const dataRes=await fetchData.json();
-                console.log(dataRes);
-                
-                
-                if(dataRes.success)
-                {
-                    toast.success(dataRes.message);
-                    navigate("/login");
-                }
-                else
-                {
-                    toast.error(dataRes.message);
-                }
+        if(firstName && lastName && email && password && confirmPassword){
+            if(!validateData(data, toast))
+                return;
+
+            const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/signup`,{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+                },
+                body:JSON.stringify(data)
+            })
+
+            const dataRes=await fetchData.json();
+            console.log(dataRes);
+            
+            
+            if(dataRes.success)
+            {
+                toast.success(dataRes.message);
+                navigate("/login");
             }
-            else{
-                toast.error("Password and Confirm Password are not same!!");
-            }
+            else
+            {
+                toast.error(dataRes.message);
+            }            
         }
         else
             toast.error("Please enter required fields..")

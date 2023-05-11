@@ -5,6 +5,26 @@ import { toast } from "react-hot-toast";
 import { useCookies } from "react-cookie"
 import loginsignupimage from "../../assets/login-animation.gif"
 
+const validateData = (email, password, toast) => {
+    if (!new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+$', 'gm').test(email))
+    {
+        toast.error('Invalid Email');
+        return false;
+    }
+    if (!new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$', 'gm').test(password))
+    {
+        toast.error('Password must be minimum eight characters, have atleast one uppercase letter, one lowercase letter, one number and one special character');
+        return false;
+    }
+    if(password.length > 16)
+    {
+        toast.error('Password must be of maximum 16 characters');
+        return false;
+    }
+
+    return true;
+}
+
 function Login() {
     const navigate=useNavigate()
 
@@ -33,9 +53,12 @@ function Login() {
     }
 
     const handleSubmit=async(e)=>{
-        e.preventDefault()
-        const {email,password}=data
-        if(email && password){         
+        e.preventDefault();
+        const {email,password} = data;
+
+        if(email && password){       
+            if(!validateData(email, password, toast))
+                return;
             const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/admin/login`,{
                 method:"POST",
                 headers:{
