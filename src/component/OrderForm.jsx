@@ -27,9 +27,13 @@ const OrderForm = (props) => {
     }
 
     const storeFormData = (e) => {
-        e.preventDefault()
-        dispatch(addFormData(formData));
-        props.submitOrder();
+        e.preventDefault();
+        new Promise((resolve, reject) => {
+            dispatch(addFormData(formData));
+            resolve();
+        }).then(() => {
+            props.submitOrder();
+        })
     }
 
     return (

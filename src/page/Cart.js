@@ -2,8 +2,10 @@ import React from "react";
 import Product from "../component/Product";
 import Bill from "../component/Bill";
 import OrderForm from "../component/OrderForm";
-import { useSelector } from "react-redux";
+import { emptyCart } from "../redux/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom'
 import { toast } from "react-hot-toast";
 import "../assets/css/Cart.css";
 
@@ -11,6 +13,8 @@ const Cart = () => {
 	const cart = useSelector((state) => state.cart);
 	const products = useSelector((state) => state.product);
     const [cookies , , ] = useCookies(["access_token"]);
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const getProduct = (productId) => {
 		const index = products.findIndex((ele) => ele._id === productId);
@@ -18,19 +22,28 @@ const Cart = () => {
 	}
 
 	const submitOrder = async () => {
-		const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/addOrder`,{
+		const fetchData= await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/addOrder`,{
 			method:"POST",
 			headers:{
 				"content-type": "application/json",
 				"x-access-token": cookies['access_token']
 			},
-			body:JSON.stringify({})
+			body:JSON.stringify(cart)
 		})
 
 		const dataRes=await fetchData.json();
 		console.log(dataRes);
-			
-		toast.success(dataRes.message);
+
+		if(dataRes.success)
+		{
+			toast.success(dataRes.message);
+			dispatch(emptyCart());
+			navigate('/');
+		}
+		else
+		{
+			toast.error(dataRes.message);
+		}
 	}
 
 	return (

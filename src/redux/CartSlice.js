@@ -11,7 +11,11 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addFormData: (state, action) => {
-            state.deliveryAddress = action.payload;
+            state.deliveryAddress.houseNo = action.payload.house;
+            state.deliveryAddress.street = action.payload.street;
+            state.deliveryAddress.landMark = action.payload.landmark;
+            state.deliveryAddress.pinCode = action.payload.pincode;
+            state.deliveryAddress.contactNumber = action.payload.contact;            
         },
         addCartItem: (state, action) => {
             const check = state.items.some((el) => el.productId === action.payload._id);
