@@ -1,0 +1,106 @@
+.admin-order-bill-container {
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 8px grey;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.admin-order-bill-container-header{
+    margin-top:0;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.admin-order-bill-table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
+    /* padding-bottom: 10px; */
+    border-spacing: 0 9px;
+}
+
+.admin-order-bill-table tr > th {
+    width: 50%;
+    text-align: left;
+    padding-left: 11vw;
+    /* border-bottom: 1px solid; */
+}
+
+.admin-order-bill-table tr > td {
+    width: 50%;
+    padding-left: 10vw;
+    text-align: left;
+    /* padding-top: 0; */
+    /* border-bottom: 1px solid; */
+}
+
+.admin-order-bill-table tr {
+    margin-bottom: 2px;
+    height: 50px;
+    /* border-bottom: 1px solid; */
+
+}
+
+.admin-order-bill-legend{
+    width: auto;
+}
+
+.admin-order-bill-legend > h2{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 1.6em;
+}
+
+.admin-order-bill-fieldset {
+    border-radius: 15px;
+    border: 1px solid rgb(218, 218, 218);
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+.admin-order-bill-head {
+    border-bottom: 1px solid;
+}
+
+.admin-order-bill-delivery-container{
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.admin-order-bill-header{
+    font-size: 1.4em;
+}
+
+.admin-order-bill-body{
+    padding: 10px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 15px;
+}
+
+.admin-order-bill-item-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5px 0;
+}
+
+.admin-order-bill-pending-icon{
+    color: rgb(255, 196, 0);
+}
+
+.admin-order-bill-complete-icon{
+    color: green;
+}
+.admin-order-btn{
+    float: center;
+     margin-top:2px ; 
+    padding: 2px;
+    border: 1px solid;
+    border-radius: 5px;
+}
