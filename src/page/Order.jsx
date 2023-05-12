@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import OrderBill from "../component/OrderBill";
 import { useCookies } from "react-cookie";
 import "../assets/css/Order.css";
 
@@ -38,7 +39,7 @@ const Order = () => {
                         orders.map((value, index) => {
                             return (
                                 <div>
-                                    {value.totalPrice}
+                                    <OrderBill value={value} index={index} />
                                 </div>
                             );
                         })
