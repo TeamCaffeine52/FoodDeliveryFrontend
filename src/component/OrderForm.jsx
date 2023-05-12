@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import { useDispatch } from "react-redux";
 import { addFormData } from "../redux/cartSlice";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import "../assets/css/OrderForm.css";
 
 const OrderForm = (props) => {
@@ -26,8 +27,37 @@ const OrderForm = (props) => {
         });
     }
 
+    const validateData = () => {
+        if(!new RegExp('^[0-9]+$', 'gm').test(formData.house)){
+            toast.error("House / Flat No should be a positive number");
+            return false;
+        }
+        if(!new RegExp('^[a-z ,A-z]+$', 'gm').test(formData.street)){
+            toast.error("Street should contain only letters");
+            return false;
+        }
+        if(!new RegExp('^[a-z A-z]+$', 'gm').test(formData.landmark)){
+            toast.error("Landmark should contain only letters");
+            return false;
+        }
+        if(!new RegExp('^[0-9]{6}$', 'gm').test(formData.pincode)){
+            toast.error("Pincode should be a six digit number");
+            return false;
+        }
+        if(!new RegExp('^[0-9]{10}$', 'gm').test(formData.contact)){
+            toast.error("Phone No. should be a ten digit number");
+            return false;
+        }
+
+        return true;
+    }
+
     const storeFormData = (e) => {
         e.preventDefault();
+
+        if(!validateData())
+            return;
+
         new Promise((resolve, reject) => {
             dispatch(addFormData(formData));
             resolve();

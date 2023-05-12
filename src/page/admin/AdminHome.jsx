@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Product from '../../component/Product';
+import Category from '../../component/Category';
+import ProductEditor from '../../component/ProductEditor';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadAllProducts } from '../../redux/productSlice';
 import { loadAllCategory } from '../../redux/categorySlice';
@@ -11,6 +12,11 @@ const AdminHome = () => {
     const productState = useSelector((state) => state.product);
     const categoryState = useSelector((state) => state.category);
 
+    const [selectedCategoryId, setSelectedCategoryId] = useState();
+
+    const updateCategorySelection = (index) => {
+        setSelectedCategoryId(categoryState[index]._id);
+    }
 
     useEffect(() => {
         async function requestCategoryData(){
@@ -24,6 +30,7 @@ const AdminHome = () => {
             const dataRes = await fetchData.json();
             console.log("Category", dataRes);
             dispatch(loadAllCategory(dataRes));
+            setSelectedCategoryId(dataRes[0]._id);
 
         }
         async function requestProductData(){
@@ -46,18 +53,27 @@ const AdminHome = () => {
 
     return (
         <>
-            <span>
-                Admin Home
-            </span>
-            <div className='min-h-screen bg-slate-300 home-products-div'>
-                { categoryState.map((value, index) => {
-                    return value.categoryName + " ";
-                })}
-                { productState.map((value, index) => {
-                    return (
-                        <Product value={value} index={index} />
-                    );
-                }) }
+            <div className='home-main-div'>
+
+                <div className='home-category-display'>
+                    {categoryState.map((value, index) => {
+                        return <Category 
+                            value={value} 
+                            index={index} 
+                            updateCategorySelection={updateCategorySelection} 
+                            key={value._id} />
+                    })}
+                </div>
+                
+                <div className='home-product-display'>
+                    {productState.map((value, index) => {
+                        return (
+                            value.categoryId === selectedCategoryId ?
+                                <ProductEditor value={value} index={index} key={value._id}/>
+                                : null
+                        );
+                    })}
+                </div>
             </div>
         </>
     )

@@ -23,7 +23,7 @@ export const productSlice = createSlice({
 		},
 
 		updateProductQuantity: (state, action) => {
-			state[action.payload.index].updateProductQuantity = action.payload.productQuantity;
+			state[action.payload.index].productQuantity = action.payload.productQuantity;
 		}
 	},
 });

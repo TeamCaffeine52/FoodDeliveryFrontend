@@ -35,8 +35,11 @@ const Product = (props) => {
         else
         {
             // exist, increase quantity
-            dispatch(increasePurchasedQuantity(product));
-            setPurchaseQuantity((prev) => prev + 1);
+            if(product.productQuantity > purchaseQuantity)
+            {
+                dispatch(increasePurchasedQuantity(product));
+                setPurchaseQuantity((prev) => prev + 1);
+            }
         }
     }
 

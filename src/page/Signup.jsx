@@ -37,7 +37,6 @@ const validateData = (data, toast) => {
         return false;
     }
 
-
     return true;
 }
 
@@ -52,7 +51,7 @@ function Signup() {
         email:"",
         confirmPassword:"",
         password:"",
-        image:""
+        // image:""
     });
 
     const handleShowPassword = ()=>{
@@ -73,7 +72,7 @@ function Signup() {
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        const {firstName, lastName, image, email, password, confirmPassword} = data;
+        const {firstName, lastName, email, password, confirmPassword} = data;
 
         if(firstName && lastName && email && password && confirmPassword){
             if(!validateData(data, toast))
@@ -105,16 +104,16 @@ function Signup() {
             toast.error("Please enter required fields..")
     }
 
-    const handleUploadProfileImage=async(e)=>{
-        const data=await ImagetoBase64(e.target.files[0])
-        console.log(data);
-        setData((preve)=>{
-            return{
-                ...preve,
-                [image]:data
-            }
-        })
-    }
+    // const handleUploadProfileImage=async(e)=>{
+    //     const data=await ImagetoBase64(e.target.files[0])
+    //     console.log(data);
+    //     setData((preve)=>{
+    //         return{
+    //             ...preve,
+    //             [image]:data
+    //         }
+    //     })
+    // }
     return(
         <div className='p-3 md:p-4'>
             <div className='w-full max-w-md bg-white m-auto flex-col p-2'>
@@ -122,10 +121,10 @@ function Signup() {
                 <div className='w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative'>
                     <img src={data.image ? data.image: loginsignupimage} className='w-full h-full'/>
                     <label htmlFor='profileImage'>
-                    <div className='absolute bottom-0 h-1/3 bg-slate-500 bg-opacity-50 w-full text-center'>
+                    {/* <div className='absolute bottom-0 h-1/3 bg-slate-500 bg-opacity-50 w-full text-center'>
                         <p className='text-sm p-1 text-white cursor-pointer'>Upload</p>
-                    </div>
-                    <input type='file' id='profileImage' accept='image/*' className='hidden' onChange={handleUploadProfileImage} />
+                    </div> */}
+                    {/* <input type='file' id='profileImage' accept='image/*' className='hidden' onChange={handleUploadProfileImage} /> */}
                 </label>
                 </div>
                

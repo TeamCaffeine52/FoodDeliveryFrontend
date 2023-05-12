@@ -50,14 +50,17 @@ const Header = () => {
                                     </>
                                 }
                             </nav>
-                            <div className="text-2xl text-sale-600 relative">
-                                <Link to={"/cart"}>
-                                    <BsFillCartFill/>
-                                    <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
-                                        {cart.items.length}
-                                    </div>
-                                </Link>
-                            </div>
+                            { !isAdmin ? 
+                                <div className="text-2xl text-sale-600 relative">
+                                    <Link to={"/cart"}>
+                                        <BsFillCartFill/>
+                                        <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
+                                            {cart.items.length}
+                                        </div>
+                                    </Link>
+                                </div>
+                                : null
+                            }
                         </>
                         : null
                     }
