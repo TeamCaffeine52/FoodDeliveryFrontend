@@ -65,7 +65,6 @@ function Login() {
                 headers:{
                     "content-type":"application/json"
                 },
-                credentials: 'same-origin',
                 body:JSON.stringify(data)
             })
 

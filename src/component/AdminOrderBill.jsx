@@ -1,10 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderBillProductDisplay from "./OrderBillProductDisplay";
 import PendingIcon from '@mui/icons-material/Pending';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import Button from '@mui/material/Button';
+import { useCookies } from "react-cookie";
+import { toast } from "react-hot-toast";
 import "../assets/css/AdminOrderBill.css";
 
 const AdminOrderBill = (props) => {
+    const [cookies , , ] = useCookies(["access_token"]);
+    const [isDeliveryCompleted, setIsCompleted] = useState(props.value.isCompleted);
+
+    const updateOrderStatus = async () => {
+        const fetchData= await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/admin/updateOrderStatus`,{
+			method:"POST",
+			headers:{
+				"content-type": "application/json",
+				"x-access-token": cookies['access_token']
+			},
+            body:JSON.stringify({_id: props.value._id})
+		})
+
+		const dataRes=await fetchData.json();
+        console.log(dataRes);
+
+        if(dataRes.success){
+            setIsCompleted(true);
+            toast.success(dataRes.message);
+        }
+        else{
+            toast.error(dataRes.message);
+        }
+    }
     return (
         <>
             <div class="admin-order-bill-container">
@@ -15,7 +42,7 @@ const AdminOrderBill = (props) => {
                         </div>
                         <div>
                             {
-                                props.value.isCompleted ?
+                                isDeliveryCompleted ?
                                     <CheckCircleIcon className="admin-order-bill-complete-icon" />
                                     :
                                     <PendingIcon className="admin-order-bill-pending-icon" />
@@ -23,38 +50,26 @@ const AdminOrderBill = (props) => {
                             {props.value._id}
                         </div>
                     </div>
-                    <hr></hr>
-
-                    <div className="admin-order-bill-item-row">
-                        {/* <div class="admin-order-head">
-                            <b class="admin-order-size"> IsComplete</b>
-                            <button class="admin-order-btn">Complete</button>
-                        </div> */}
-                        <div>
-                           <b> Delivery Completed</b>
-                        </div>
-                        <div>
-                        <button class="admin-order-btn">Complete</button>
-                        </div>
-                    </div>
-
-
-
-
-
+                    
+                    {
+                        isDeliveryCompleted ? 
+                            null
+                        :
+                            <>
+                                <hr />
+                                <div className="admin-order-bill-item-row">
+                                    <div>
+                                    <b> Delivery Completed</b>
+                                    </div>
+                                    <div>
+                                        <Button onClick={updateOrderStatus} variant="outlined">
+                                            Complete
+                                        </Button>
+                                    </div>
+                                </div>
+                            </>
+                    }
                 </div>
-                {/* 
-<br/>
-
-                    <div class="admin-order-head">
-                   <b class="admin-order-size"> IsComplete</b>
-                    <button class="admin-order-btn">Complete</button>
-                </div> */}
-
-
-
-
-
                 <br />
                 <div class="admin-order-bill-delivery-container">
                     <div class="admin-order-bill-legend">
@@ -71,11 +86,10 @@ const AdminOrderBill = (props) => {
                                     <div className="admin-order-bill-body">
                                         <div className="admin-order-bill-item-row">
                                             <div>
-                                                Name
+                                                Customer Name
                                             </div>
                                             <div>
-                                                {/* {props.value.deliveryAddress.houseNo} */}
-                                                Abc
+                                                {`${props.value.deliveryAddress.firstName} ${props.value.deliveryAddress.lastName}`}
                                             </div>
                                         </div>
                                         <hr />
@@ -160,7 +174,10 @@ const AdminOrderBill = (props) => {
                             </>
                     }
                     <>
-                        <OrderBillProductDisplay items={props.value.items} />
+                        <OrderBillProductDisplay
+                            items={props.value.items}
+                            concatkey={props.value._id}
+                        />
                     </>
                 </div>
             </div>

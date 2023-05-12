@@ -37,10 +37,10 @@ const OrderBill = (props) => {
                                         <div className="order-bill-header">
                                             <b>Delivery Details</b>
                                         </div>
-                                        <div className="order-bill-body">
+                                        <div className="order-bill-body">                                            
                                             <div className="order-bill-item-row">
                                                 <div>
-                                                    <b>Flat/House:</b>
+                                                    Flat/House:
                                                 </div>
                                                 <div>
                                                     {props.value.deliveryAddress.houseNo}
@@ -119,7 +119,10 @@ const OrderBill = (props) => {
                                 </>
                     }
                     <>
-                        <OrderBillProductDisplay items={props.value.items} />
+                        <OrderBillProductDisplay 
+                            items={props.value.items}
+                            concatkey={props.value._id}
+                        />
                     </>
                 </div>
             </div>

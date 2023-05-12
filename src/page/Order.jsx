@@ -39,7 +39,11 @@ const Order = () => {
                         orders.map((value, index) => {
                             return (
                                 <div>
-                                    <OrderBill value={value} index={index} />
+                                    <OrderBill 
+                                        value={value} 
+                                        index={index} 
+                                        key={value._id}
+                                    />
                                 </div>
                             );
                         })

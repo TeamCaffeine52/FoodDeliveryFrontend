@@ -25,6 +25,7 @@
     width: 100%;
     overflow-x: scroll;
     overflow-y: hidden;
+    align-items: flex-start;
     margin: 30px 0;
 }
 
@@ -40,3 +41,47 @@
 .home-category-display::-webkit-scrollbar-track {
     background-color: transparent;
 }
+
+.home-category-input-container{
+    width: 100%;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px grey ;
+    display: flex;
+}
+
+.home-category-pic-div {
+    width: 15vw;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-img {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: 1px solid grey;
+    object-fit: cover;
+}
+
+.home-category-input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.home-category-input-button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+

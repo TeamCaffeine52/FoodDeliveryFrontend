@@ -40,7 +40,7 @@ const OrderBillProductDisplay = (props) => {
                                 <BillItem 
                                     product={getProduct(value.productId)} 
                                     quantity={value.purchasedQuantity}
-                                    key={value.productId} 
+                                    key={props.concatkey+value.productId} 
                                 />
                             );
                         })

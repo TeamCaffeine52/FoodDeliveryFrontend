@@ -5,7 +5,12 @@ const Category = (props) => {
     return (
         <>
             <div className="category-container" key={props.value._id}>
-                <div className="category-image" onClick={() => {props.updateCategorySelection(props.index)}}>
+                <div className="category-image"
+                    style={{
+                        backgroundImage: `url(${props.value.categoryImage})`
+                    }} 
+                    onClick={() => {props.updateCategorySelection(props.index)}}
+                >
                 </div>
                 <div className="category-name">
                     {props.value.categoryName}

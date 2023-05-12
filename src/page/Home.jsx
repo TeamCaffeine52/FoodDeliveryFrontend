@@ -66,7 +66,9 @@ const Home = () => {
             <div className='home-slideshow'>
                 <Fade>
                     { slideImages.map((slideImage, index) => {
-                        return <Slide slideImage={slideImage} index={index} />
+                        return <Slide slideImage={slideImage}
+                                    index={index}
+                                    key={index} />
                     })}
                 </Fade>
             </div>

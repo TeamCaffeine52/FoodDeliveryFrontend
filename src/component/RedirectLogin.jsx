@@ -41,6 +41,10 @@ const  RedirectLogin = () => {
                 if(isAdmin)
                 {
                     // Admin so All pages Allowed
+                    if(!currentPath.startsWith('/admin'))
+                    {
+                        navigate('/admin');
+                    }
                 }
                 else
                 {
