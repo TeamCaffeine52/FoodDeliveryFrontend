@@ -5,11 +5,10 @@ import "../assets/css/Bill.css"
 import "../assets/css/BillItem.css"
 
 
-const OrderBillProductDisplay = () => {
-	const cart = useSelector((state) => state.cart);
+const OrderBillProductDisplay = (props) => {
 	const products = useSelector((state) => state.product);
 	const getProduct = (productId) => {
-		const index = products.findIndex((ele) => ele._id === productId);
+        const index = products.findIndex((ele) => ele._id === productId);
 		return products[index];
 	}
     let totalPrice = 0;
@@ -35,7 +34,7 @@ const OrderBillProductDisplay = () => {
                     </div>
                     <hr />
                     {
-                        cart.items.map((value, index) => {
+                        props.items.map((value, index) => {
                             totalPrice += value.purchasedQuantity * getProduct(value.productId).productPrice;
                             return (
                                 <BillItem 

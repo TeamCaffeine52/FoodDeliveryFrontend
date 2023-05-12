@@ -54,7 +54,7 @@
     padding: 0;
     margin: 0;
     margin-bottom: 8px;
-    font-size: 1.3em;
+    font-size: 1.6em;
 }
 
 .order-bill-fieldset {
@@ -74,12 +74,26 @@
     padding: 15px;
 }
 
-.bill-header{
+.order-bill-header{
     font-size: 1.4em;
 }
 
-.bill-body{
+.order-bill-body{
     padding: 10px;
     border: 1px solid rgb(209, 209, 209);
     border-radius: 15px;
+}
+
+.order-bill-item-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5px 0;
+}
+
+.order-bill-pending-icon{
+    color: rgb(255, 196, 0);
+}
+
+.order-bill-complete-icon{
+    color: green;
 }

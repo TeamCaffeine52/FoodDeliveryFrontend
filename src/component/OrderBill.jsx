@@ -1,65 +1,92 @@
 import React from "react";
 import OrderBillProductDisplay from "./OrderBillProductDisplay";
-
+import PendingIcon from '@mui/icons-material/Pending';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import "../assets/css/OrderBill.css";
 
 const OrderBill = (props) => {
     return (
         <>
             <div class="order-bill-container">
-                <fieldset class="order-bill-fieldset">
-                    <table class="order-bill-table">
-                        <tr>
-                            <th class="order-bill-oid">Order id:</th>
-                            <td id="order" class="order-bill-data">
+                    <div className="order-bill-body">
+                        <div className="order-bill-item-row">
+                            <div>
+                                <b>Order ID</b>
+                            </div>
+                            <div>
+                                {
+                                    props.value.isCompleted ? 
+                                        <CheckCircleIcon className="order-bill-complete-icon"/>
+                                    :
+                                        <PendingIcon className="order-bill-pending-icon" />
+                                }
                                 {props.value._id}
-                            </td>
-                        </tr>
-                    </table>
-                </fieldset>
+                            </div>
+                        </div>
+                    </div>
                 <br />
                 <div class="order-bill-delivery-container">
                     <div class="order-bill-legend">
-                        <h2>Delivery Details</h2>
+                        <h2>Order Details</h2>
                     </div>
                     {
                         props.value.deliveryAddress.hasOwnProperty("houseNo")
                             ?
                                 <>
-                                    <div class="order-bill-delivery-container">
-                                        <table class="order-bill-table">
-                                            <tr>
-                                                <th class="order-bill-head">Flat/House:</th>
-                                                <td id="order" class="order-bill-head">
+                                    <div className="order-bill-container">
+                                        <div className="order-bill-header">
+                                            <b>Delivery Details</b>
+                                        </div>
+                                        <div className="order-bill-body">
+                                            <div className="order-bill-item-row">
+                                                <div>
+                                                    <b>Flat/House:</b>
+                                                </div>
+                                                <div>
                                                     {props.value.deliveryAddress.houseNo}
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <th class="order-bill-head">Street:</th>
-                                                <td id="order" class="order-bill-head">
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            
+                                            <div className="order-bill-item-row">
+                                                <div>
+                                                    Street:
+                                                </div>
+                                                <div>
                                                     {props.value.deliveryAddress.street}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="order-bill-head">Land Mark:</th>
-                                                <td id="order" class="order-bill-head">
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            
+                                            <div className="order-bill-item-row">
+                                                <div>
+                                                    Land Mark:
+                                                </div>
+                                                <div>
                                                     {props.value.deliveryAddress.landMark}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="order-bill-head">Pin Code:</th>
-                                                <td id="order" class="order-bill-head">
+                                                </div>
+                                            </div>
+                                            <hr />
+
+                                            <div className="order-bill-item-row">
+                                                <div>
+                                                    Pin Code:
+                                                </div>
+                                                <div>
                                                     {props.value.deliveryAddress.pinCode}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th class="order-bill-head1">Contact:</th>
-                                                <td id="order" class="order-bill-head1">
+                                                </div>
+                                            </div>
+                                            <hr />
+
+                                            <div className="order-bill-item-row">
+                                                <div>
+                                                    Contact:
+                                                </div>
+                                                <div>
                                                     {props.value.deliveryAddress.contactNumber}
-                                                </td>
-                                            </tr>
-                                        </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </>
                             :
@@ -92,7 +119,7 @@ const OrderBill = (props) => {
                                 </>
                     }
                     <>
-                        <OrderBillProductDisplay />
+                        <OrderBillProductDisplay items={props.value.items} />
                     </>
                 </div>
             </div>
