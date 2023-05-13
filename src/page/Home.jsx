@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loadAllProducts } from '../redux/productSlice';
 import { loadAllCategory } from '../redux/categorySlice';
 import Slide from '../component/Slide';
+import { useCookies } from "react-cookie";
 import { Fade } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import img1 from '../assets/slideshow/1.jpg';
@@ -22,6 +23,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const productState = useSelector((state) => state.product);
     const categoryState = useSelector((state) => state.category);
+    const [cookies , , ] = useCookies(["access_token"]);
 
     const [selectedCategoryId, setSelectedCategoryId] = useState();
 
@@ -34,7 +36,8 @@ const Home = () => {
             const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/getAllCategory`, {
                 method: "GET",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "x-access-token": cookies['access_token']
                 },
             })
 
@@ -47,7 +50,8 @@ const Home = () => {
             const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/getAllProducts`, {
                 method: "GET",
                 headers: {
-                    "content-type": "application/json"
+                    "content-type": "application/json",
+                    "x-access-token": cookies['access_token']
                 },
             })
 

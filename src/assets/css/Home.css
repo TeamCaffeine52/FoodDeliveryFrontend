@@ -20,6 +20,7 @@
     background-color: lightgray;
 }
 
+/******************** Category ScrollBar Display *********************/
 .home-category-display {
     display: flex;
     width: 100%;
@@ -42,6 +43,9 @@
     background-color: transparent;
 }
 
+
+/******************** Category Input *********************/
+
 .home-category-input-container{
     width: 100%;
     margin: 15px 0;
@@ -63,7 +67,7 @@
     overflow: hidden;
 }
 
-.home-img {
+.home-category-img {
     border-radius: 50%;
     aspect-ratio: 1/1;
     border: 1px solid grey;
@@ -85,3 +89,55 @@
     margin-top: 8px;
 }
 
+.home-category-input-card-body{
+    flex-grow: 1;
+}
+
+/******************** Product Input *********************/
+
+.home-product-input-container{
+    width: 100%;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px grey ;
+    display: flex;
+}
+
+.home-product-pic-div {
+    width: 30vw;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    overflow: hidden;
+}
+
+.home-product-img {
+    width: 100%;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    border: 1px solid grey;
+    object-fit: cover;
+}
+
+.home-product-input {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+.home-product-input-button{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.home-product-input-card-body{
+    flex-grow: 1;
+}

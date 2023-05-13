@@ -68,7 +68,7 @@ const Product = (props) => {
         <>
             <div className="product-card">
                 <div className="product-wrapper">
-                    <img className="product-img" src={icecream} />
+                    <img className="product-img" src={props.value.productImage} />
                 </div>
 
                 <div className="product-card-body">

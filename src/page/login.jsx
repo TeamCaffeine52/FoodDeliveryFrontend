@@ -57,8 +57,8 @@ function Login() {
 
         
         if(email && password){
-            // if(!validateData(email, password, toast))
-            //     return;
+            if(!validateData(email, password, toast))
+                return;
 
             const fetchData=await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/login`,{
                 method:"POST",

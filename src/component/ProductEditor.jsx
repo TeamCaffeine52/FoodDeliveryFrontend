@@ -77,7 +77,7 @@ const Product = (props) => {
                     :   null
                 }
                 <div className="product-editor-wrapper">
-                    <img className="product-editor-img" src={icecream} />
+                    <img className="product-editor-img" src={props.value.productImage} />
                 </div>
 
                 <div className="product-editor-card-body">

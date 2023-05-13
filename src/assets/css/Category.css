@@ -11,21 +11,29 @@
     height: 100%;
     aspect-ratio: 1/1;
     background: url(https://picsum.photos/200);
-    background-size: 100%;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0px 0px 5px gray;
     cursor: pointer;
-    transition: background 1s;
+    position: relative;
+    overflow: hidden;
+    background-color: #000;
+    background-position: center center;
+    transition: transform .2s ;
 }
+
+.category-image::before { 
+    content:"";
+    position:absolute; top:0;right:0;bottom:0;left:0;
+    background:inherit;
+    transition:inherit;
+  }
+.category-image:hover::before { 
+    transform: scale(1.5);
+}
+
 .category-image-clicked{
     border: 2px solid black;
-}
-.category-image:hover{
-    background-size: 150%;
-    box-shadow: 0px 0px 0px gray;
-    background-position: center;
 }
 .category-name{
     text-align: center;

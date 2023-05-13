@@ -5,7 +5,7 @@ const Category = (props) => {
     return (
         <>
             <div className="category-container" key={props.value._id}>
-                <div className="category-image"
+                <div className="category-image zoom-in"
                     style={{
                         backgroundImage: `url(${props.value.categoryImage})`
                     }} 
