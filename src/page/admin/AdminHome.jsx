@@ -133,7 +133,7 @@ const AdminHome = () => {
             return;
         }
         const formData = productForm;
-        productForm.categoryId = selectedCategoryId
+        formData.categoryId = selectedCategoryId
         console.log(formData);
 
         const fetchData = await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/admin/addProduct`,{
@@ -152,6 +152,13 @@ const AdminHome = () => {
         {
             toast.success(dataRes.message);
             dispatch(addProduct(dataRes.result));
+            setProductForm({
+                productName: '',
+                productDetails: '',
+                productImage: '',
+                productQuantity: '',
+                productPrice: '',
+            });
         }
         else{
             toast.error(dataRes.message);
