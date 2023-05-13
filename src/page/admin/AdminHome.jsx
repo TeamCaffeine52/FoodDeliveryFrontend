@@ -297,19 +297,23 @@ const AdminHome = () => {
                     
                         <div className="home-product-input-card-body">
                             <label className='mb-0' htmlFor='pname'>Product Name:</label>
-                            <input className='home-product-input' name='productName' type="text" id="pname" 
+                            <input className='home-product-input' name='productName' type="text" id="pname"
+                                value={productForm.productName}
                                 onChange={updateProductForm}
                             />
                             <label className='mb-0' htmlFor='pdesc'>Product Description:</label>
                             <input className='home-product-input' name='productDetails' type="text" id="pdesc" 
+                                value={productForm.productDetails}
                                 onChange={updateProductForm}
                             />
                             <label className='mb-0' htmlFor='pqty'>Product Quantity:</label>
                             <input className='home-product-input' name='productQuantity' type="number" id="pqty" 
+                                value={productForm.productQuantity}
                                 onChange={updateProductForm}
                             />
                             <label className='mb-0' htmlFor='pprice'>Product Price:</label>
                             <input className='home-product-input' name='productPrice' type="number" id="pprice" 
+                                value={productForm.productPrice}
                                 onChange={updateProductForm}
                             />
 
