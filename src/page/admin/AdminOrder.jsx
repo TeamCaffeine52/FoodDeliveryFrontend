@@ -35,10 +35,11 @@ const AdminOrder = () => {
                 <hr/>
                 {
                     orders.length > 0 ?
-                        orders.map((value, index) => {
+                        orders.map((value, index, array) => {
                             return (
                                 <div>
-                                    <AdminOrderBill value={value} 
+                                    <AdminOrderBill 
+                                        value={array[array.length - 1 - index]} 
                                         index={index} 
                                         key={value._id}
                                     />

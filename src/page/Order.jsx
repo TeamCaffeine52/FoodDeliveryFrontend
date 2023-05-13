@@ -36,12 +36,12 @@ const Order = () => {
                 <hr/>
                 {
                     orders.length > 0 ?
-                        orders.map((value, index) => {
+                        orders.map((value, index, array) => {
                             return (
                                 <div>
                                     <OrderBill 
-                                        value={value} 
-                                        index={index} 
+                                        value={array[array.length - 1 - index]} 
+                                        index={index}
                                         key={value._id}
                                     />
                                 </div>
