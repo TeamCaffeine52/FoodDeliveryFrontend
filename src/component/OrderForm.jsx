@@ -58,12 +58,7 @@ const OrderForm = (props) => {
         if(!validateData())
             return;
 
-        new Promise((resolve, reject) => {
-            dispatch(addFormData(formData));
-            resolve();
-        }).then(() => {
-            props.submitOrder();
-        })
+        dispatch(addFormData(formData));
     }
 
     return (

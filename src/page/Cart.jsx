@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Product from "../component/Product";
 import Bill from "../component/Bill";
 import OrderForm from "../component/OrderForm";
@@ -21,30 +21,38 @@ const Cart = () => {
 		return products[index];
 	}
 
-	const submitOrder = async () => {
-		const fetchData= await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/addOrder`,{
-			method:"POST",
-			headers:{
-				"content-type": "application/json",
-				"x-access-token": cookies['access_token']
-			},
-			body:JSON.stringify(cart)
-		})
-
-		const dataRes=await fetchData.json();
-		console.log(dataRes);
-
-		if(dataRes.success)
+	useEffect(() => {
+		if(cart.deliveryAddress.isFilled !== true)
 		{
-			toast.success(dataRes.message);
-			dispatch(emptyCart());
-			navigate('/');
+			return;
 		}
-		else
-		{
-			toast.error(dataRes.message);
+		const fetchDatafn = async () => {
+			const fetchData= await fetch(`${process.env.REACT_APP_SERVER_DOMAIN}/addOrder`,{
+				method:"POST",
+				headers:{
+					"content-type": "application/json",
+					"x-access-token": cookies['access_token']
+				},
+				body:JSON.stringify(cart)
+			})
+
+			const dataRes= await fetchData.json();
+			console.log(dataRes);
+
+			if(dataRes.success)
+			{
+				toast.success(dataRes.message);
+				dispatch(emptyCart());
+				navigate('/');
+			}
+			else
+			{
+				toast.error(dataRes.message);
+			}
 		}
-	}
+		fetchDatafn();
+	}, [cart.deliveryAddress]);
+
 
 	return (
 		<>
@@ -69,7 +77,7 @@ const Cart = () => {
 								<Bill />
 							</div>
 							<div>
-								<OrderForm submitOrder={submitOrder} />
+								<OrderForm />
 							</div>
 						</>
 

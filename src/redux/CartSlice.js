@@ -11,11 +11,18 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addFormData: (state, action) => {
-            state.deliveryAddress.houseNo = action.payload.house;
-            state.deliveryAddress.street = action.payload.street;
-            state.deliveryAddress.landMark = action.payload.landmark;
-            state.deliveryAddress.pinCode = action.payload.pincode;
-            state.deliveryAddress.contactNumber = action.payload.contact;            
+            return {
+                ...state,
+                deliveryAddress: {
+                    ...state.deliveryAddress,
+                    houseNo: action.payload.house,
+                    street: action.payload.street,
+                    landMark: action.payload.landmark,
+                    pinCode: action.payload.pincode,
+                    contactNumber: action.payload.contact,
+                    isFilled: true,
+                },
+            };      
         },
         addCartItem: (state, action) => {
             const check = state.items.some((el) => el.productId === action.payload._id);
