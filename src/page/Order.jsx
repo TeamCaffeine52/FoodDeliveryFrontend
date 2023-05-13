@@ -36,7 +36,7 @@ const Order = () => {
                 <hr/>
                 {
                     orders.length > 0 ?
-                        orders.map((value, index, array) => {
+                        orders.filter((ele) => ele.isCompleted !== true).map((value, index, array) => {
                             return (
                                 <div>
                                     <OrderBill 
@@ -51,6 +51,22 @@ const Order = () => {
                         <div className="order-empty-header">
                             Wow, Such Empty
                         </div>
+                }
+                {
+                    orders.length > 0 ?
+                        orders.filter((ele) => ele.isCompleted === true).map((value, index, array) => {
+                            return (
+                                <div>
+                                    <OrderBill 
+                                        value={array[array.length - 1 - index]} 
+                                        index={index} 
+                                        key={value._id}
+                                    />
+                                </div>
+                            );
+                        })
+                    :
+                        null
                 }
             </div>
         </>
